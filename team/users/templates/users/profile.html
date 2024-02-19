@@ -1,0 +1,79 @@
+{% extends "users/base.html" %}
+
+{% block title %}add details{% endblock title %}
+
+
+{% block content %}
+<h1 class='mx-5 mt-2'>Profile</h1>
+    <form action="" method='POST' enctype='multipart/form-data' >
+        {% csrf_token %}
+        {% comment %} <div class="container">
+            {{form}}
+        </div> {% endcomment %}
+        <div class="container g-3 p-2" >
+            <div class="row mx-5">
+                <div class="col-md-5">
+                    <label class="form-label fw-semibold fs-5">{{ form.first_name.label }}</label>
+                    {{ form.first_name }}
+                </div>
+                <div class="col-md-5  mx-5">
+                    <label class="form-label fw-semibold fs-5">{{ form.last_name.label }}</label>
+                    {{ form.last_name }}
+                </div>
+            </div>
+            
+            <div class="row mx-5">
+                <div class="col-md-5 mt-3">
+                    <label class="form-label fw-semibold fs-5">{{ form.age.label }}</label>
+                    {{ form.age }}
+                </div>
+    
+                <div class="col-md-5 mt-3 mx-5">
+                    <label class="form-label fw-semibold fs-5">{{ form.birthday.label }}</label>
+                    {{ form.birthday }}
+                </div>
+    
+            </div>
+            <div class="row mx-5">
+                <div class="col-md-5 mt-3">
+                    <label class="form-label fw-semibold fs-5">{{ form.image.label }}</label>
+                    {{ form.image }}
+                </div>
+                <div class="col-md-5 mt-5 mx-4">
+                    <label class="form-label fw-semibold fs-5 mx-3">{{ form.location.label }}</label>
+                    {{ form.location }}
+                </div>
+            </div>
+            
+            <div class="row mx-5">
+                <div class="col-md-5 mt-4">
+                    <label class="form-label fw-semibold fs-5">{{ form.bio.label }}</label>
+                    {{ form.bio }}
+                </div>
+                <div class="col-md-5 mt-4 mx-5 ">
+                    <div class="col mt-4 ">
+                        <label class="form-label fw-semibold fs-5 mx-3 " >{{ form.gender.label }}</label>
+                        {{ form.gender }}
+                    </div>
+                    <div class="col mt-4 ">
+                        <label class="form-label fw-semibold fs-5 mx-3 " >{{ form.contact_number.label }}</label>
+                        {{ form.contact_number }}
+                    </div>
+    
+    
+                    <div class="col-6 mt-3 mx-3 ">
+                        <label class="form-label fw-semibold fs-5">{{ form.captcha.label }}</label>
+                        {{ form.captcha }}
+                    </div>
+                    <button type='submit' class='btn btn-primary mt-5 mx-5 fs-4'>submit</button>
+                </div>
+                
+            </div>
+            {# Captcha Field #}
+
+            
+
+        </div>
+        
+    </form>
+{% endblock content %}
