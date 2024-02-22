@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>heloo</h1>
+
+<h1>{{name}} </h1>  {% comment %} cookie {% endcomment %}
+
+<h1>{{useTest}}</h1>{% comment %} sessions {% endcomment %}
+
+
+{% comment %} For testcookies {% endcomment %}
+<form method='POST'>
+    {% csrf_token %}
+    <input type='submit' value='Test'/>
+</form>
+
+{% endblock content %}
