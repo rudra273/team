@@ -1,0 +1,34 @@
+<!-- login.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <h1>Login</h1>
+    <form method="POST" >
+        {% csrf_token %}
+        {{ form.as_p }}
+        {% comment %} <img src="{{ captcha_image_url }}" alt="captcha">
+        <input type="text" name="captcha_1" placeholder="Enter Captcha" required>
+        <input type="hidden" name="captcha_0" value="{{ new_captcha_key }}"> {% endcomment %}
+        <button type="button" id="refresh_captcha">Refresh Captcha</button>
+        <input type="submit" value="Login">
+    </form>
+    <script>
+        document.getElementById('refresh_captcha').addEventListener('click', function () {
+            fetch('/refresh_captcha/')
+                .then(response => response.json())
+                .then(data => {
+                    document.querySelector('img').src = data.captcha_image_url;
+                });
+        });
+        setTimeout(function () {
+            location.reload();
+        }, {{ captcha_timeout }} * 1000);
+    </script>
+</body>
+</html>
